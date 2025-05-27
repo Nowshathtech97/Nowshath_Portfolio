@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Nowshath - Personal Portfolio HTML Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Background Video Styles -->
+    <style>
+        /* Video Background */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -1;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+        }
+
+        #bg-video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.65;
+            filter: brightness(1.2) contrast(1.1) saturate(1.1) hue-rotate(-5deg);
+            transition: all 0.5s ease;
+        }
+
+        /* Gradient overlay for better text visibility */
+        .video-background::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(26, 26, 46, 0.75),
+                rgba(22, 33, 62, 0.75),
+                rgba(15, 52, 96, 0.75)
+            );
+            z-index: 0;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+
+        /* Main content wrapper */
+        .main-content {
+            position: relative;
+            z-index: 1;
+            background: transparent;
+        }
+
+        /* Ensure all sections are visible */
+        section, .container, .container-fluid {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            background: rgba(26, 26, 46, 0.85) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar .navbar-nav .nav-link {
+            color: #ffffff !important;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4),
+                         0 0 10px rgba(0, 229, 255, 0.2);
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .navbar .navbar-nav .nav-link:hover {
+            color: #00e5ff !important;
+            transform: translateY(-2px);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4),
+                         0 0 15px rgba(0, 229, 255, 0.4);
+        }
+
+        /* Card and form backgrounds */
+        .card, .form-control {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            box-shadow: 0 0 0 0.25rem rgba(0, 229, 255, 0.3);
+        }
+
+        /* Project cards */
+        .project-item .bg-dark {
+            background: rgba(26, 26, 46, 0.8) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .project-item .bg-dark:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-item .bg-dark:hover .project-title {
+            color: #00e5ff;
+            text-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+        }
+
+        /* Project titles and descriptions */
+        .project-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4cc9f0;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(76, 201, 240, 0.3);
+            letter-spacing: 0.5px;
+        }
+
+        .project-description {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Testimonial section */
+        .testimonial-item {
+            background: rgba(26, 26, 46, 0.75);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        #testimonial .rounded-circle {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Contact section */
+        #contact {
+            background: transparent;
+        }
+
+        /* Footer */
+        .container-fluid.bg-dark {
+            background: rgba(15, 52, 96, 0.85) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            font-weight: 500;
+        }
+
+        /* Ensure proper stacking context */
+        body {
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #ffffff;
+        }
+
+        /* Adjust section backgrounds */
+        .container-fluid.bg-light {
+            background: transparent !important;
+        }
+
+        /* Text colors and shadows */
+        h1, h2, h3, h4, h5, h6 {
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        p, span, label {
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+            font-weight: 500;
+        }
+
+        /* Button styling */
+        .btn-primary {
+            background: linear-gradient(135deg, #4cc9f0, #4361ee);
+            border: none;
+            box-shadow: 0 4px 15px rgba(76, 201, 240, 0.4),
+                       0 0 20px rgba(76, 201, 240, 0.2);
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            font-size: 1.1rem;
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4),
+                        0 0 10px rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #4361ee, #4cc9f0);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 201, 240, 0.5),
+                       0 0 30px rgba(76, 201, 240, 0.3);
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4),
+                        0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-primary:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 10px rgba(76, 201, 240, 0.4);
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4),
+                        0 0 20px rgba(255, 255, 255, 0.6);
+        }
+
+        /* Specific styling for Download CV button */
+        .btn-primary.py-3.px-4.me-5 {
+            font-size: 1.2rem;
+            padding: 0.8rem 2rem !important;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #4cc9f0, #4361ee);
+            box-shadow: 0 4px 15px rgba(76, 201, 240, 0.4),
+                       0 0 20px rgba(76, 201, 240, 0.2),
+                       inset 0 0 10px rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4),
+                        0 0 15px rgba(255, 255, 255, 0.4);
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary.py-3.px-4.me-5:hover {
+            background: linear-gradient(135deg, #4361ee, #4cc9f0);
+            box-shadow: 0 6px 20px rgba(76, 201, 240, 0.5),
+                       0 0 30px rgba(76, 201, 240, 0.3),
+                       inset 0 0 15px rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4),
+                        0 0 20px rgba(255, 255, 255, 0.6);
+        }
+
+        /* Badge styling */
+        .badge {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .badge.bg-primary {
+            background: linear-gradient(135deg, #4cc9f0, #4361ee) !important;
+            border: 1px solid rgba(76, 201, 240, 0.3);
+        }
+
+        .badge.bg-secondary {
+            background: linear-gradient(135deg, #4361ee, #3a0ca3) !important;
+            border: 1px solid rgba(67, 97, 238, 0.3);
+        }
+
+        .badge.bg-success {
+            background: linear-gradient(135deg, #2ecc71, #27ae60) !important;
+            border: 1px solid rgba(46, 204, 113, 0.3);
+        }
+
+        .badge.bg-info {
+            background: linear-gradient(135deg, #3498db, #2980b9) !important;
+            border: 1px solid rgba(52, 152, 219, 0.3);
+        }
+
+        .badge.bg-warning {
+            background: linear-gradient(135deg, #f1c40f, #f39c12) !important;
+            border: 1px solid rgba(241, 196, 15, 0.3);
+        }
+
+        /* Section titles */
+        .section-title {
+            color: #000000;
+            text-shadow: none;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #4cc9f0, #4361ee);
+            border-radius: 2px;
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: lineGrow 1s ease-out forwards;
+        }
+
+        .highlight {
+            color: #000000;
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            font-weight: 800;
+            text-shadow: none;
+            position: relative;
+        }
+
+        .highlight::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -10px;
+            right: -10px;
+            bottom: -5px;
+            background: rgba(76, 201, 240, 0.1);
+            border-radius: 8px;
+            z-index: -1;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+
+        .highlight:hover::before {
+            transform: scale(1);
+        }
+
+        .rocket {
+            display: inline-block;
+            font-size: 2rem;
+            animation: rocket-fly 2s infinite ease-in-out;
+            margin-right: 10px;
+        }
+
+        @keyframes rocket-fly {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-8px) rotate(-10deg);
+            }
+        }
+
+        @keyframes lineGrow {
+            to {
+                transform: scaleX(1);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Project section background */
+        #project {
+            position: relative;
+            background: linear-gradient(135deg,
+                rgba(26, 26, 46, 0.85),
+                rgba(22, 33, 62, 0.85),
+                rgba(15, 52, 96, 0.85)
+            );
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 80px 0;
+        }
+
+        /* Tab button styling */
+        .tab-btn {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid #4cc9f0;
+            color: #4cc9f0;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            background: transparent;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: 0 2px 5px rgba(76, 201, 240, 0.2);
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: linear-gradient(135deg, #4cc9f0, #4361ee);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(76, 201, 240, 0.3);
+            border-color: transparent;
+        }
+
+        .scroll-tabs {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .scroll-tabs {
+                gap: 0.5rem;
+            }
+            .tab-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Project container styling */
+        #project-container {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .project-item {
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .project-item .bg-dark {
+            background: rgba(26, 26, 46, 0.8) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-item .bg-dark::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(76, 201, 240, 0.1),
+                rgba(67, 97, 238, 0.1)
+            );
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .project-item .bg-dark:hover::before {
+            opacity: 1;
+        }
+
+        .project-item .bg-dark:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #4cc9f0;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .project-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, #4cc9f0, #4361ee);
+            transition: width 0.3s ease;
+        }
+
+        .project-item:hover .project-title::after {
+            width: 100px;
+        }
+
+        .project-description {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 6px 12px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            border-radius: 20px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .badge.bg-primary {
+            background: rgba(76, 201, 240, 0.2) !important;
+            color: #4cc9f0;
+            border: 1px solid rgba(76, 201, 240, 0.3);
+        }
+
+        .badge.bg-secondary {
+            background: rgba(67, 97, 238, 0.2) !important;
+            color: #4361ee;
+            border: 1px solid rgba(67, 97, 238, 0.3);
+        }
+
+        .badge.bg-success {
+            background: rgba(46, 204, 113, 0.2) !important;
+            color: #2ecc71;
+            border: 1px solid rgba(46, 204, 113, 0.3);
+        }
+
+        .badge.bg-info {
+            background: rgba(52, 152, 219, 0.2) !important;
+            color: #3498db;
+            border: 1px solid rgba(52, 152, 219, 0.3);
+        }
+
+        .badge.bg-warning {
+            background: rgba(241, 196, 15, 0.2) !important;
+            color: #f1c40f;
+            border: 1px solid rgba(241, 196, 15, 0.3);
+        }
+
+        .project-item:hover .badge {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .project-item .bg-dark {
+                padding: 20px;
+            }
+
+            .project-title {
+                font-size: 1.2rem;
+            }
+
+            .project-description {
+                font-size: 0.95rem;
+            }
+
+            .badge {
+                font-size: 0.8rem;
+                padding: 5px 10px;
+            }
+        }
+
+        /* Project section title styling */
+        .animated-headline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            display: inline-block;
+            animation: fadeInUp 1.2s ease-out;
+            position: relative; /* Added for absolute positioning of ::after */
+        }
+
+        .animated-headline::after {
+            content: '';
+            position: absolute;
+            bottom: -8px; /* Adjust vertical position below the text */
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ff007f, #00ff00); /* New attractive gradient from hot pink to lime green */
+            border-radius: 2px;
+        }
+
+        .section-title {
+            color: #000000;
+            text-shadow: none;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="80">
+    <!-- Video Background -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline id="bg-video">
+            <source src="img/video/background.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        <!-- === Website Content Wrapper === -->
+        <div class="content">
+            <!-- All your portfolio content (header, about, services, etc.) goes inside here -->
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand-lg bg-white navbar-light fixed-top shadow py-lg-0 px-4 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+                <a href="index.html" class="navbar-brand d-block d-lg-none">
+                    <h1 class="text-primary fw-bold m-0">NOWSHATH</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between py-4 py-lg-0" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="#home" class="nav-item nav-link active">Home</a>
+                        <a href="#about" class="nav-item nav-link">About</a>
+                        <a href="#skill" class="nav-item nav-link">Skills</a>
+                    </div>
+                    <a href="index.html" class="navbar-brand bg-secondary py-3 px-4 mx-3 d-none d-lg-block">
+                        <h1 class="text-primary fw-bold m-0">NOWSHATH</h1>
+                    </a>
+                    <div class="navbar-nav me-auto py-0">
+                        <a href="#project" class="nav-item nav-link">Projects</a>
+                        <a href="#contact" class="nav-item nav-link">Contact</a>
+                    </div>
+                </div>
+            </nav>
+            <!-- Navbar End -->
+
+            <!-- Header Start -->
+            <div class="container-fluid bg-light my-6 mt-0" id="home">
+                <div class="container">
+                    <div class="row g-5 align-items-center">
+                        <!-- LEFT SIDE: Image -->
+                        <div class="col-lg-6 text-center text-lg-end" style="padding-right: 30px;">
+                            <img class="img-fluid" src="img/Nowshath.png" alt="Nowshath M" style="
+                                max-width: 100%;
+                                height: auto;
+                                width: 350px;
+                                border-radius: 20px;
+                                box-shadow: 0 15px 35px rgba(0,0,0,0.3),
+                                            0 0 0 10px rgba(76, 201, 240, 0.1),
+                                            0 0 0 15px rgba(67, 97, 238, 0.1);
+                                border: 5px solid transparent;
+                                background: linear-gradient(white, white) padding-box,
+                                            linear-gradient(135deg, #4cc9f0, #4361ee) border-box;
+                                transform: perspective(1000px) rotateY(-5deg);
+                                transition: all 0.5s ease;
+                                position: relative;
+                                z-index: 1;
+                                filter: brightness(1.05) contrast(1.05);
+                                margin-top: 96px;
+                            " onmouseover="this.style.transform='perspective(1000px) rotateY(0deg) scale(1.02)'" 
+                               onmouseout="this.style.transform='perspective(1000px) rotateY(-5deg)'">
+                        </div>
+            
+                        <!-- RIGHT SIDE: Text content -->
+                        <div class="col-lg-6 py-6 pb-0 pt-lg-0" style="padding-left: 30px;">
+                            <h3 class="text-primary mb-3">I'm</h3>
+                            <h1 class="display-3 mb-3">NOWSHATH M</h1>
+                            <h2 class="typed-text-output d-inline"></h2>
+                            <div class="typed-text d-none">Software Developer, Computer Science Student, Innovator, Passionate About Tech Solutions & Entrepreneurship</div>
+                            <div class="d-flex align-items-center pt-5">
+                                <a href="https://qr-codes.io/VM9q5P
+                                " class="btn btn-primary py-3 px-4 me-5">Download CV</a>
+                                <button type="button" class="btn-play" data-bs-toggle="modal"
+                                    data-src="https://www.linkedin.com/in/nowshathm/" data-bs-target="#videoModal">
+                                    <span></span>
+                                </button>
+                                <h5 class="ms-4 mb-0 d-none d-sm-block">
+                                    <a href="https://www.linkedin.com/in/nowshathm/" target="_blank" style="color: inherit;">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Header End -->
+            <!-- About Start -->
+            <div class="container-xxl py-6" id="about">
+                <div class="container">
+                    <div class="row g-5">
+                        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="d-flex align-items-center mb-5">
+                                <div class="years flex-shrink-0 text-center me-4">
+                                    <h1 class="display-1 mb-0">3</h1>
+                                    <h5 class="mb-0">Years</h5>
+                                </div>
+                                <h3 class="lh-base mb-0">of hands-on experience in software development, innovation & tech entrepreneurship</h3>
+                            </div>
+                            <p class="mb-4">I'm Nowshath, a passionate Computer Science student and dedicated software developer with 3 years of practical experience. I've worked on smart attendance systems, travel planning tools, inclusive learning platforms, and alumni-student connection portals. I love solving real-world problems through technology.</p>
+                            <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>Business Competition Winner</p>
+                            <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>Innovative Project Contributor in Smart Admin & AI-Powered Tools</p>
+                            <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>Proficient in Python, Flask, MySQL, HTML, and Machine Learning</p>
+                            <p class="mb-4">I've contributed to impactful student-led tech initiatives, combining creativity with practical development skills to build solutions that matter.</p>
+                            <p class="mb-4">My journey as a computer science student has been driven by curiosity, collaboration, and a strong commitment to delivering purpose-driven results.</p>
+                            <!-- Keep or remove the Read More button as needed -->
+                            <!-- <a class="btn btn-primary py-3 px-5 mt-3" href="">Read More</a> -->
+                        </div>
+                        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                            <!-- Placeholder for the image or other content on the right side -->
+                             <img class="img-fluid rounded" src="img/team-1.jpg" alt="Team Member" style="
+                                max-width: 100%; 
+                                height: auto; 
+                                box-shadow: 0 8px 25px rgba(0,0,0,0.3),
+                                            0 0 0 10px rgba(76, 201, 240, 0.1),
+                                            0 0 0 15px rgba(67, 97, 238, 0.1);
+                                border: 5px solid transparent;
+                                background: linear-gradient(white, white) padding-box,
+                                            linear-gradient(135deg, #4cc9f0, #4361ee) border-box;
+                                transition: all 0.3s ease;
+                                position: relative;
+                                z-index: 1;
+                            ">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- About End -->
+
+            <!-- Expertise Start -->
+            <div class="container-xxl py-6 pb-5" id="skill">
+                <div class="container">
+                    <div class="row g-5">
+                        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <h1 class="display-5 mb-5">Skills & Experience</h1>
+                            <p class="mb-4">Nowshath has a strong background in UI design, web development, and app design, with significant experience in various technologies and educational achievements. She has honed her skills through dedicated learning and hands-on projects at renowned institutions and schools.</p>
+                            <h3 class="mb-4">My Skills</h3>
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <div class="skill mb-4">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="font-weight-bold">HTML</h6>
+                                            <h6 class="font-weight-bold">95%</h6>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <div class="skill mb-4">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="font-weight-bold">CSS</h6>
+                                            <h6 class="font-weight-bold">85%</h6>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <div class="skill mb-4">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="font-weight-bold">Figma</h6>
+                                            <h6 class="font-weight-bold">90%</h6>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="skill mb-4">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="font-weight-bold">Java</h6>
+                                            <h6 class="font-weight-bold">90%</h6>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <div class="skill mb-4">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="font-weight-bold">Python</h6>
+                                            <h6 class="font-weight-bold">95%</h6>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                            <ul class="nav nav-pills rounded border border-2 border-primary mb-5">
+                                <li class="nav-item w-50">
+                                    <button class="nav-link w-100 py-3 fs-5 active" data-bs-toggle="pill" href="#tab-1">Experience</button>
+                                </li>
+                                <li class="nav-item w-50">
+                                    <button class="nav-link w-100 py-3 fs-5" data-bs-toggle="pill" href="#tab-2">Education</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div id="tab-1" class="tab-pane fade show p-0 active">
+                                    <div class="row gy-5 gx-4">
+                                        <div class="col-sm-6">
+                                            <h5>Oracle APEX Developer Intern</h5>
+                                            <hr class="text-primary my-2">
+                                            <p class="text-primary mb-1">Nov 2024 - Feb 2025 · 4 mos</p>
+                                            <h6 class="mb-0">Nainu Startups · Remote</h6>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h5>Software Development Intern</h5>
+                                            <hr class="text-primary my-2">
+                                            <p class="text-primary mb-1">Sep 2024 - Oct 2024 · 2 mos</p>
+                                            <h6 class="mb-0">Prodigy InfoTech · Remote</h6>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h5>Python Developer Intern</h5>
+                                            <hr class="text-primary my-2">
+                                            <p class="text-primary mb-1">Aug 2024 - Sep 2024 · 2 mos</p>
+                                            <h6 class="mb-0">SystemTron · Remote</h6>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h5>Python Development Intern</h5>
+                                            <hr class="text-primary my-2">
+                                            <p class="text-primary mb-1">Aug 2024 - Sep 2024 · 2 mos</p>
+                                            <h6 class="mb-0">Cognifyz Technologies · Remote</h6>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h5>Python Programming Intern</h5>
+                                            <hr class="text-primary my-2">
+                                            <p class="text-primary mb-1">Jul 2024 - Aug 2024 · 2 mos</p>
+                                            <h6 class="mb-0">CodSoft · Remote</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tab-2" class="tab-pane fade show p-0">
+                                    <div class="row gy-5 gx-4">
+                                        <div class="col-sm-6">
+                                            <h5>Bachelor of Engineering - BE, Computer Science and Engineering</h5>
+                                            <hr class="text-primary my-2">
+                                            <p class="text-primary mb-1">Nov 2022 - May 2026</p>
+                                            <h6 class="mb-0">Mahendra Institute of Technology</h6>
+                                            <p class="mb-0 mt-1">Current GPA: 8.17</p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h5>Higher Secondary Course (Maths - Computer Science)</h5>
+                                            <hr class="text-primary my-2">
+                                            <p class="text-primary mb-1">2021 - 2022</p>
+                                            <h6 class="mb-0">The Gugai Higher Secondary School, Salem</h6>
+                                            <p class="mb-0 mt-1">Final Grade: 53.8</p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h5>Secondary School Leaving Certificate (SSLC)</h5>
+                                            <hr class="text-primary my-2">
+                                            <p class="text-primary mb-1">2019 - 2020</p>
+                                            <h6 class="mb-0">The Gugai Higher Secondary School, Salem</h6>
+                                            <p class="mb-0 mt-1">Final Grade: 56.2</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Expertise End -->
+            <!--project start-->
+            <!-- AOS CSS -->
+        <!-- Head Includes (add these in your <head>) -->
+            <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+            <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+            
+            <!-- Projects Section -->
+            <div class="container-xxl py-6 pt-5" id="project" style="font-family: 'Montserrat', sans-serif;">
+              <div class="container text-center" style="
+                background: rgba(35, 45, 70, 1);
+                border-radius: 20px;
+                padding: 40px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+              ">
+                <!-- Animated Headline -->
+                <h1 class="animated-headline mb-4" data-aos="fade-down">
+                    <span class="rocket">🚀</span> <span class="section-title" style="color: #000000;">Exploring My</span> <span class="highlight" style="color: #000000; background: none; -webkit-background-clip: unset; background-clip: unset;">Creative Projects</span>
+                </h1>
+            
+                <!-- Tabs -->
+                <div class="scroll-tabs mb-5" data-aos="fade-up">
+                    <button class="tab-btn active" onclick="filterProjects('all')">All Projects</button>
+                    <button class="tab-btn" onclick="filterProjects('web')">Web Development</button>
+                    <button class="tab-btn" onclick="filterProjects('app')">Mobile Apps</button>
+                    <button class="tab-btn" onclick="filterProjects('ai')">AI & Machine Learning</button>
+                </div>
+            
+                <!-- Grid -->
+                <div class="row g-4" id="project-container">
+                    <!-- DURABUILDS -->
+                    <div class="col-lg-4 col-md-6 project-item web" data-aos="zoom-in">
+                        <div class="bg-dark rounded p-4 h-100 shadow-lg transition" style="
+                            background: rgba(22, 33, 62, 0.6) !important;
+                            backdrop-filter: blur(5px);
+                            -webkit-backdrop-filter: blur(5px);
+                        ">
+                            <h4 class="project-title">DURABUILDS</h4>
+                            <p class="project-description">Smart construction worker assignment & management system.</p>
+                            <span class="badge bg-primary">Automation</span>
+                            <span class="badge bg-secondary">Flask</span>
+                        </div>
+                    </div>
+            
+                    <!-- PLAN THE PLAN -->
+                    <div class="col-lg-4 col-md-6 project-item app" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="bg-dark rounded p-4 h-100 shadow-lg transition" style="
+                            background: rgba(22, 33, 62, 0.6) !important;
+                            backdrop-filter: blur(5px);
+                            -webkit-backdrop-filter: blur(5px);
+                        ">
+                            <h4 class="project-title">PLAN THE PLAN</h4>
+                            <p class="project-description">AI‑based travel planner for vehicles, food, and routes.</p>
+                            <span class="badge bg-info text-dark">UX</span>
+                            <span class="badge bg-warning text-dark">Figma</span>
+                        </div>
+                    </div>
+            
+                    <!-- ONE HUB (Web Only) -->
+                    <div class="col-lg-4 col-md-6 project-item web" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="bg-dark rounded p-4 h-100 shadow-lg transition" style="
+                            background: rgba(22, 33, 62, 0.6) !important;
+                            backdrop-filter: blur(5px);
+                            -webkit-backdrop-filter: blur(5px);
+                        ">
+                            <h4 class="project-title">ONE HUB</h4>
+                            <p class="project-description">Learning hub with jobs, courses & internships.</p>
+                            <span class="badge bg-warning text-dark">HTML</span>
+                            <span class="badge bg-success">JS</span>
+                        </div>
+                    </div>
+            
+                    <!-- SMART ATTENDANCE SYSTEM -->
+                    <div class="col-lg-4 col-md-6 project-item ai" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="bg-dark rounded p-4 h-100 shadow-lg transition" style="
+                            background: rgba(22, 33, 62, 0.6) !important;
+                            backdrop-filter: blur(5px);
+                            -webkit-backdrop-filter: blur(5px);
+                        ">
+                            <h4 class="project-title">SMART ATTENDANCE SYSTEM</h4>
+                            <p class="project-description">Face recognition & uniform compliance system using YOLOv8 & Flask.</p>
+                            <span class="badge bg-success">YOLOv8</span>
+                            <span class="badge bg-info">OpenCV</span>
+                        </div>
+                    </div>
+
+                    <!-- Smart and Secure Fraud-Resistant Platform -->
+                    <div class="col-lg-4 col-md-6 project-item ai" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="bg-dark rounded p-4 h-100 shadow-lg transition" style="
+                            background: rgba(22, 33, 62, 0.6) !important;
+                            backdrop-filter: blur(5px);
+                            -webkit-backdrop-filter: blur(5px);
+                        ">
+                            <h4 class="project-title">Smart and Secure Fraud-Resistant Platform for Scheme Verification</h4>
+                            <p class="project-description">SAP 2025<br>To verify user identity and prevent fraudulent applications for government services using AI-based identity checks, ML for duplication detection, and blockchain for document validation, with real-time monitoring via a web dashboard.</p>
+                            <span class="badge bg-success">AI</span>
+                            <span class="badge bg-info">ML</span>
+                            <span class="badge bg-primary">Blockchain</span>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- AOS & Filter Script -->
+            <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+            <script>
+              AOS.init({ duration: 800, once: true });
+            
+              function filterProjects(category) {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                event.target.classList.add('active');
+                document.querySelectorAll('.project-item').forEach(item => {
+                  item.style.display = (category === 'all' || item.classList.contains(category)) ? 'block' : 'none';
+                  if (item.style.display === 'block') item.setAttribute('data-aos','zoom-in');
+                });
+              }
+            </script>
+            
+            <!-- Custom Styles -->
+            <style>
+              .animated-headline {
+                font-family: 'Montserrat', sans-serif;
+                font-size: 2.8rem;
+                font-weight: 700;
+                display: inline-block;
+                animation: fadeInUp 1.2s ease-out;
+              }
+                .section-title {
+                    color: #000000;
+                    text-shadow: none;
+                    font-weight: 800;
+                    letter-spacing: 0.5px;
+                    position: relative;
+                }
+                .highlight {
+                    color: #000000;
+                    background: none;
+                    -webkit-background-clip: unset;
+                    background-clip: unset;
+                    font-weight: 800;
+                    text-shadow: none;
+                    position: relative;
+                }
+              .rocket {
+                display: inline-block;
+                font-size: 2rem;
+                animation: rocket-fly 2s infinite ease-in-out;
+                    margin-right: 10px;
+                }
+                .project-title {
+                    color: #3498db;
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    margin-bottom: 1rem;
+                    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+                }
+                .project-description {
+                    color: #ecf0f1;
+                    font-size: 1rem;
+                    line-height: 1.6;
+                    margin-bottom: 1.5rem;
+                    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+              }
+              @keyframes rocket-fly {
+                0%,100%{transform:translateY(0);}
+                50%{transform:translateY(-8px) rotate(-10deg);}
+              }
+              @keyframes fadeInUp {
+                from { opacity:0; transform:translateY(20px); }
+                to { opacity:1; transform:translateY(0); }
+              }
+              .scroll-tabs {
+                    display: flex; 
+                    overflow-x: auto; 
+                    gap: 15px; 
+                    justify-content: center; 
+                    padding: 1rem 0;
+                    margin-bottom: 2rem;
+                }
+                .scroll-tabs::-webkit-scrollbar { 
+                    height: 6px; 
+                }
+                .scroll-tabs::-webkit-scrollbar-thumb { 
+                    background: linear-gradient(90deg, #3498db, #2ecc71);
+                    border-radius: 3px;
+                }
+              .tab-btn {
+                    background: transparent;
+                    border: 2px solid #3498db;
+                    padding: 10px 20px;
+                    color: #3498db;
+                    border-radius: 30px;
+                    transition: all 0.3s ease;
+                    cursor: pointer;
+                    font-weight: 600;
+                    font-size: 0.95rem;
+                    white-space: nowrap;
+                    box-shadow: 0 2px 5px rgba(52, 152, 219, 0.1);
+                }
+                .tab-btn:hover {
+                    background: linear-gradient(90deg, #3498db, #2ecc71);
+                    color: #ffffff;
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
+                }
+                .tab-btn.active {
+                    background: linear-gradient(90deg, #3498db, #2ecc71);
+                    color: #ffffff;
+                    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
+                }
+                .transition { 
+                    transition: all 0.4s ease; 
+                }
+                .transition:hover { 
+                    transform: translateY(-8px); 
+                    box-shadow: 0 8px 20px rgba(0,0,0,0.5); 
+                }
+                .project-item .bg-dark {
+                    background: rgba(44, 62, 80, 0.9) !important;
+                    backdrop-filter: blur(8px);
+                    -webkit-backdrop-filter: blur(8px);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                }
+                .badge {
+                    padding: 6px 12px;
+                    font-weight: 500;
+                    letter-spacing: 0.5px;
+                    margin-right: 5px;
+                    margin-bottom: 5px;
+                    text-shadow: none;
+                }
+            </style>
+            
+
+            <!-- Projects End -->
+
+            <!-- Professional Summary Start -->
+            <div class="container-xxl py-6" id="summary">
+                <div class="container">
+                    <div class="row g-5">
+                        <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="bg-dark rounded p-5" style="
+                                background: rgba(26, 26, 46, 0.85) !important;
+                                backdrop-filter: blur(10px);
+                                -webkit-backdrop-filter: blur(10px);
+                                border: 1px solid rgba(76, 201, 240, 0.2);
+                                box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+                            ">
+                                <h2 class="section-title text-center mb-4" style="color: #4cc9f0;">Professional Summary</h2>
+                                <p class="lead text-white mb-4" style="
+                                    font-size: 1.1rem;
+                                    line-height: 1.8;
+                                    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+                                ">
+                                    Motivated and forward-thinking Computer Science Engineering student in my third year at Mahendra Institute of Technology, with
+                                    a strong foundation in Python, Java, HTML, CSS, and JavaScript. I bring hands-on experience in full-stack web development and database management (Oracle APEX), along with a solid problem-solving mindset. My portfolio includes real-world
+                                    projects and internships in software and Python development, providing practical industry exposure. A proactive learner, I secured
+                                    second place in a Business Plan Competition and actively engage in hackathons and coding challenges to refine my skills. Passionate
+                                    about innovation, collaboration, and building impactful solutions, I aim to contribute to cutting-edge software engineering and
+                                    data-driven projects at a global scale.
+                                </p>
+                                <div class="text-center mt-4">
+                                    <div class="d-inline-block p-3 rounded" style="
+                                        background: linear-gradient(135deg, rgba(76, 201, 240, 0.1), rgba(67, 97, 238, 0.1));
+                                        border: 1px solid rgba(76, 201, 240, 0.2);
+                                    ">
+                                        <i class="fas fa-quote-left text-primary fa-2x mb-3"></i>
+                                        <p class="text-white mb-0" style="font-style: italic;">
+                                            "Passionate about innovation, collaboration, and building impactful solutions"
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Professional Summary End -->
+
+            <!-- Testimonial Start -->
+            <div class="container-fluid bg-light py-5 my-5" id="testimonial">
+                <div class="container-fluid py-5">
+                    <h1 class="display-5 text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Testimonial</h1>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-3 d-none d-lg-block">
+                            <div class="testimonial-left h-100">
+                                <img class="img-fluid wow fadeIn" data-wow-delay="0.1s" src="img/testimonial-1.jpg" alt="" style="width: 120px; height: 120px; object-fit: cover;">
+                                <img class="img-fluid wow fadeIn" data-wow-delay="0.3s" src="img/testimonial-2.jpg" alt="" style="width: 120px; height: 120px; object-fit: cover;">
+                                <img class="img-fluid wow fadeIn" data-wow-delay="0.5s" src="img/testimonial-3.jpg" alt="" style="width: 120px; height: 120px; object-fit: cover;">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                            <div class="owl-carousel testimonial-carousel">
+                                <div class="testimonial-item text-center">
+                                    <div class="position-relative mb-5">
+                                        <img class="img-fluid rounded-circle border border-secondary p-2 mx-auto" src="img/testimonial-1.jpg" alt="" style="width: 120px; height: 120px; object-fit: cover;">
+                                        <div class="testimonial-icon">
+                                            <i class="fa fa-quote-left text-primary"></i>
+                                        </div>
+                                    </div>
+                                    <p class="fs-5 fst-italic">Durabuilds simplifies construction workforce management through smart automation.
+                                        It connects users with the right workers, improving project speed and efficiency..</p>
+                                    <hr class="w-25 mx-auto">
+                                    <h5>DURABUILDS</h5>
+                                    <span>Connects users with different types of workers.
+                                    </span>
+                                </div>
+                                <div class="testimonial-item text-center">
+                                    <div class="position-relative mb-5">
+                                        <img class="img-fluid rounded-circle border border-secondary p-2 mx-auto" src="img/testimonial-2.jpg" alt="" style="width: 120px; height: 120px; object-fit: cover;">
+                                        <div class="testimonial-icon">
+                                            <i class="fa fa-quote-left text-primary"></i>
+                                        </div>
+                                    </div>
+                                    <p class="fs-5 fst-italic">
+
+                                            Implemented a secure document verification process to ensure authenticity, prevent fraud, and streamline compliance, as part of an SAP hackathon project that integrates intelligent data solutions 
+                                            </p>
+                                    <hr class="w-25 mx-auto">
+                                    <h5>Compliance</h5>
+                                    <span>Enhances efficiency by reducing manual effort in verification and processing.</span>
+                                </div>
+                                <div class="testimonial-item text-center">
+                                    <div class="position-relative mb-5">
+                                        <img class="img-fluid rounded-circle border border-secondary p-2 mx-auto" src="img/testimonial-3.jpg" alt="" style="width: 120px; height: 120px; object-fit: cover;">
+                                        <div class="testimonial-icon">
+                                            <i class="fa fa-quote-left text-primary"></i>
+                                        </div>
+                                    </div>
+                                    <p class="fs-5 fst-italic">Developed a smart attendance system using machine learning and computer vision to detect uniform compliance through a web camera. This innovative project, implemented with HTML, Flask (Python), MySQL, and YOLOv8, was created for a hackathon, showcasing your skills in AI and full-stack development.</p>
+                                    <hr class="w-25 mx-auto">
+                                    <h5>Efficient Automation </h5>
+                                    <span>Highlighting how your solutions improve accuracy and save time.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 d-none d-lg-block">
+                            <div class="testimonial-right h-100">
+                                <img class="img-fluid wow fadeIn" data-wow-delay="0.1s" src="img/testimonial-1.jpg" alt="">
+                                <img class="img-fluid wow fadeIn" data-wow-delay="0.3s" src="img/testimonial-2.jpg" alt="">
+                                <img class="img-fluid wow fadeIn" data-wow-delay="0.5s" src="img/testimonial-3.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimonial End -->
+             <!-- Profile Summary Start -->
+    <div class="container-fluid py-5" id="profile-summary">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <img class="img-fluid rounded-circle mb-4" src="img/Nowshath.png" alt="Nowshath M" style="width: 150px; height: 150px; object-fit: cover; object-position: 50% 50%;">
+                    <h2 class="display-6 mb-1">NOWSHATH M</h2>
+                    <p class="text-primary mb-3">BACHELOR OF COMPUTER SCIENCE AND ENGINEERING</p>
+                    <p class="lead px-4">I am continuously seeking opportunities to learn and grow, particularly in software development, web application design I thrive in collaborative environments and am always eager to connect with like-minded professionals who are passionate about making a difference in the tech industry.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Profile Summary End -->
+
+
+            <!-- Contact Start -->
+    <div class="container-xxl pb-5" id="contact">
+        <div class="container py-5">
+            <div class="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-6">
+                    <h1 class="display-5 mb-0">Let's Work Together</h1>
+                </div>
+                <div class="col-lg-6 text-lg-end">
+                    <a class="btn btn-primary py-3 px-5" href="mailto:nowshathtech@gmail.com">Say Hello</a>
+                </div>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <p class="mb-2">Address:</p>
+                    <h3 class="fw-bold">135, Sankari Main Road, Linemedu, Salem-636006</h3>
+                    <hr class="w-100">
+                    <p class="mb-2">Call me:</p>
+                    <h3 class="fw-bold">8754325694</h3>
+                    <hr class="w-100">
+                    <p class="mb-2">Mail me:</p>
+                    <h3 class="fw-bold">nowshathtech@gmail.com</h3>
+                    <hr class="w-100">
+                    <p class="mb-2">Follow me:</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-square btn-primary me-2" href="https://www.linkedin.com/in/nowshathm" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <form action="mailto:nowshathtech@gmail.com" method="post" enctype="text/plain">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                                    <label for="name">Your Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+                                    <label for="email">Your Email</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+                                    <label for="subject">Subject</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="message" name="message" placeholder="Message" style="height: 150px" required></textarea>
+                                    <label for="message">Message</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary py-3 px-5" type="submit">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+   
+    <!-- Copyright Start -->
+    <div class="container-fluid bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="border-bottom text-secondary" href="#">NOWSHATH M Portfolio</a>, All Right Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <!--/*** This template is free as long as you keep the footer author's credit link/attribution link/backlink. 
+                        If you'd like to use the template without the footer author's credit link/attribution link/backlink, 
+                        you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". 
+                        Thank you for your support. ***/-->
+                    Designed By <a class="border-bottom text-secondary">NOWSHATH M</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/typed/typed.min.js"></script>
+        <script src="lib/counterup/counterup.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib/isotope/isotope.pkgd.min.js"></script>
+        <script src="lib/lightbox/js/lightbox.min.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+        <!-- Custom Scroll Script -->
+    <script>
+            // Initialize AOS with custom settings
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true,
+                mirror: false,
+                offset: 80
+            });
+
+            // Initialize WOW.js with custom settings
+            new WOW().init({
+                boxClass: 'wow',
+                animateClass: 'animated',
+                offset: 80,
+                mobile: true,
+                live: true
+            });
+
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'auto',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Navbar scroll behavior
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.style.padding = '10px 0';
+                    navbar.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+                } else {
+                    navbar.style.padding = '20px 0';
+                    navbar.style.boxShadow = 'none';
+                }
+            });
+
+            // Back to top button behavior
+            const backToTop = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTop.style.display = 'block';
+                } else {
+                    backToTop.style.display = 'none';
+                }
+            });
+
+            // Remove spinner after page load
+            window.addEventListener('load', function() {
+                const spinner = document.getElementById('spinner');
+                if (spinner) {
+                    spinner.style.display = 'none';
+                }
+            });
+    </script>
+
+        
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+    </div>
+</body>
+
+</html>
